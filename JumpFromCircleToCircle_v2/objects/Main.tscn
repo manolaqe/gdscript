@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://ui/Screens.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Background.tscn" type="PackedScene" id=2]
+[ext_resource path="res://objects/Main.gd" type="Script" id=7]
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 7 )
+
+[node name="Background" parent="." instance=ExtResource( 2 )]
+
+[node name="StartPosition" type="Position2D" parent="."]
+position = Vector2( 512, 640 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 512, 640 )
+offset = Vector2( 0, -500 )
+rotating = true
+current = true
+limit_smoothed = true
+smoothing_enabled = true
+smoothing_speed = 3.0
+drag_margin_bottom = 0.0
+
+[node name="Screens" parent="." instance=ExtResource( 1 )]
+[connection signal="start_game" from="Screens" to="." method="new_game"]
